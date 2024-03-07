@@ -648,3 +648,14 @@ class CurrencyFormatPackage {
     return format.currencySymbol;
   }
 }
+
+# To access that function
+
+var res = await CurrencyFormatPackage().GetCurrencyName(_productList[0]['currencyCode'].toString());
+          if(res!=null){
+            setState(() {
+              String currencyName=res['name']??'';
+              currencyController.text=currencyName+'('+_productList[0]['currencyCode'].toString()+')';
+              currencySymbol=CurrencyFormatPackage().GetCurrencySymbol(_productList[0]['currencyCode'].toString());
+            });
+          }
